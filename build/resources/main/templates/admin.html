@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Панель администратора</title>
+  <link rel="stylesheet" th:href="@{/special.css}" href="static/style.css">
+</head>
+<body>
+<h1>Записи на прием</h1>
+<br>
+<table style="width: 40vw;">
+  <tr>
+    <th>Дата</th>
+    <th>Имя клиента</th>
+    <th>Доктор</th>
+    <th>Дополнительно</th>
+    <th>Номер телефона</th>
+  </tr>
+  <tr th:each="res, iter:${reservation}">
+    <td th:utext="${res.date}">...</td>
+    <td th:utext="${res.reservedBy}">...</td>
+    <td th:utext="${resTable[iter.index].tableName}">...</td>
+    <td th:utext="${res.table_id}">...</td>
+    <td th:utext="${res.dateOfRes}">...</td>
+    <td th:utext="${res.timeOfRes}">...</td>
+    <td th:utext="${res.notes}">...</td>
+    <td th:utext="${res.phoneNumber}">...</td>
+  </tr>
+</table>
+
+</body>
+</html>

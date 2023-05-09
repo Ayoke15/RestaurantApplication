@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml"
+
+
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Столы</title>
+</head>
+<body>
+<h1>Столы для бронирования</h1>
+<br>
+<table>
+    <tr th:each="table:${ResTableList}">
+        <td th:utext="${table.tableName}">...</td>
+        <td th:utext="${table.reservedBy}">...</td>
+        <td th:utext="${table.numberOfSeats}">...</td>
+        <td th:utext="${table.date}">...</td>
+        <td th:utext="${table.time}">...</td>
+    </tr>
+</table>
+
+</body>
+</html>
