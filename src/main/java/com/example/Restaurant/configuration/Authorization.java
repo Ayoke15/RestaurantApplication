@@ -23,7 +23,7 @@ public class Authorization {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/restables").permitAll()
                         .requestMatchers("/admin").permitAll()
-                        .requestMatchers("/reservation").permitAll()
+                        .requestMatchers("/reservation","/reserved-tables").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
