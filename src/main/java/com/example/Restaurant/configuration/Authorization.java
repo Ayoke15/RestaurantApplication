@@ -22,7 +22,7 @@ public class Authorization {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/restables").permitAll()
-                        .requestMatchers("/admin").permitAll()
+                        //.requestMatchers("/admin").permitAll()
                         .requestMatchers("/reservation","/reserved-tables").permitAll()
                         .anyRequest().authenticated()
                 )
@@ -49,4 +49,6 @@ public class Authorization {
                         .build();
         return new InMemoryUserDetailsManager(user, admin);
     }
+
+
 }

@@ -12,6 +12,11 @@
 <h1>Столы для бронирования</h1>
 <br>
 <table>
+    <tr>
+    <th>Столик</th>
+    <th>Количество мест</th>
+
+    </tr>
     <tr th:each="table:${ResTableList}">
         <td th:utext="${table.tableName}">...</td>
         <td th:utext="${table.numberOfSeats}">...</td>
