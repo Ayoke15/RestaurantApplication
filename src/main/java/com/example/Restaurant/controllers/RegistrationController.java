@@ -1,0 +1,54 @@
+package com.example.Restaurant.controllers;
+
+import com.example.Restaurant.domain.User;
+import com.example.Restaurant.repositories.UserRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+@RequestMapping("/registration")
+public class RegistrationController {
+
+    @Autowired
+    private UserRepo userRepo;
+    @GetMapping
+    public String Registration(Model model){
+        User user = new User();
+        model.addAttribute("user", user);
+        return "login";
+    }
+    @PostMapping("/login")
+    public String login(@RequestParam String username, @RequestParam String password) {
+        User user = userRepo.findUserByUsername(username);
+        if (user == null || !password.equals(user.getPassword())) {
+            return "login";
+        }
+        return "reservation.html";
+    }
+    @PostMapping
+    public String regUser(@ModelAttribute("user") User user, Model model){
+        if (!user.getPassword().equals(user.getCheckPassword())) {
+            model.addAttribute("errorConfPassword", true);
+            return "login";
+        }
+        if (user.getPassword().length() < 3) {
+            model.addAttribute("errorLenPassword", true);
+            return "login";
+        }
+        if (userRepo.findUserByUsername(user.getUsername()) != null) {
+            model.addAttribute("errorAlreadyExistsUsername", true);
+            return "login";
+        }
+        try {
+        userRepo.save(user);
+        return "index.html";
+        } catch (Exception e) {
+        model.addAttribute("errorAnomaly", true);
+        return "login";
+    }
+    }
+
+
+}
