@@ -13,6 +13,7 @@ public class Config implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/reservation").setViewName("reservation");
         registry.addViewController("/admin").setViewName("admin");
+        registry.addViewController("/css/styles").setViewName("style");
     }
 
 }

@@ -22,7 +22,7 @@ public class Authorization {
         http
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/", "/restables").permitAll()
-                        //.requestMatchers("/admin").permitAll()
+                        .requestMatchers("/style").permitAll()
                         .requestMatchers("/reservation","/reserved-tables").permitAll()
                         .anyRequest().authenticated()
                 )
