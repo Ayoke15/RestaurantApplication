@@ -1,0 +1,2 @@
+# RestaurantApplication
+For eduational purposes
