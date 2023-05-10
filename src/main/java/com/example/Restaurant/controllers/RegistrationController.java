@@ -2,7 +2,10 @@ package com.example.Restaurant.controllers;
 
 import com.example.Restaurant.domain.User;
 import com.example.Restaurant.repositories.UserRepo;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +28,26 @@ public class RegistrationController {
     public String loginError(Model model) {
         model.addAttribute("loginError", true);
         return "login";
+    }
+    @PostMapping("/login")
+    public void login(@RequestBody LoginRequest loginRequest, HttpServletRequest request, HttpServletResponse response) {
+        System.out.println(loginRequest.getUsername());
+    }
+
+    class LoginRequest {
+
+        private String username;
+        private String password;
+
+        public Object getUsername() {
+            return this.username;
+        }
+
+        public Object getPassword() {
+            return this.password;
+        }
+
+        // getters and setters
     }
     /*
     @GetMapping

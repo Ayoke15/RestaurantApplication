@@ -17,19 +17,12 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private Date date;
-
     private String reservedBy;
-
     private int table_id;
-
     private String dateOfRes;
-
     private String timeOfRes;
-
     private String notes;
-
     private String phoneNumber;
 
 
